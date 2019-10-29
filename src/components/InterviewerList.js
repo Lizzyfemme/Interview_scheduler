@@ -2,9 +2,7 @@ import React from "react";
 import "components/InterviewerList.scss";
 import InterviewerListItem from "components/InterviewerListItem"
 
-{/* <section className="interviewers">
-  <h4 className="interviewers__header text--light">Interviewer</h4>
-</section> */}
+
 
 export default function InterviewerList(props) {
   
