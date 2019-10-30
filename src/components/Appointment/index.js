@@ -1,16 +1,20 @@
 
-import React from "react";
+import React, { Fragment } from 'react'
 
 import "./styles.scss";
 import Header from "./Header.js"
-//import Empty from "./Empty.js"
+import Empty from "./Empty.js"
+import Show from "./Show.js"
 
 
 
-export default function Appointment() {
+export default function Appointment(props) {
+  
   return (
-    <body>
-      <Header />
-      <article className="appointment"></article>
-    </body>)
+    <Fragment>
+    <article className="appointment"></article>
+      <Header time={props.time} />
+      {props.interview ? <Show name={props.interview.student} interviewer={props.interview.interviewer} /> : <Empty onClick={props.onAdd} />}
+     </Fragment>
+  )
 };

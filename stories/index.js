@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from 'react'
 
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
@@ -146,4 +146,22 @@ storiesOf("Button", module)
         .add("Confirm", () => <Confirm message="Delete the appointment?" onConfirm={action("onConfirm")}  onCancel={action("onCancel")} />)
         .add("Status", () => <Status message= "Deleting" />)
         .add("Error", () => <Error message=  "Could not delete appointment." onClose={action("onClose")} />)
-        .add("Form", () => <Form interviewers={interviewers} />)
+        .add("Create", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={action("onCancel")} message ="Enter Student Name" />)
+        .add("Edit", () => <Form interviewers={interviewers} name= "Bob" interviewer= {interviewer.id} onSave={action("onSave")} onCancel={action("onCancel")} message ="Enter Student Name"  />)
+        .add("Appointment Empty", () => (
+          <Fragment>
+            <Appointment id={1} time="12pm" />
+            <Appointment id="last" time="1pm" />
+          </Fragment>
+        ))
+        .add("Appointment Booked", () => (
+          <Fragment>
+            <Appointment
+              id={1}
+              time="12pm"
+              interview={{ student: "Lydia Miller-Jones", interviewer }}
+            />
+            <Appointment id="last" time="1pm" />
+          </Fragment>
+        ))
+        
