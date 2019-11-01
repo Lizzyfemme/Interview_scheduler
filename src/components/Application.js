@@ -3,8 +3,7 @@ import axios from "axios";
 import "components/Application.scss";
 import Appointment from "components/Appointment/index.js"
 import DayList from "components/DayList";
-import getAppointmentsForDay from "../helpers/selectors.js"
-import getInterview from "../helpers/selectors.js"
+import {getAppointmentsForDay, getInterview} from "../helpers/selectors.js"
 
 
 export default function Application(props) {
