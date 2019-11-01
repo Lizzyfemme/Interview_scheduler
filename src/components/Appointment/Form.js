@@ -31,7 +31,7 @@ function cancel(){
         value={name}
         onChange={event => setName(event.target.value)}
         type="text"
-        placeholder={props.message}
+        placeholder="Enter Student Name"
      
       />
     </form>
@@ -42,7 +42,7 @@ function cancel(){
   </section>
   <section className="appointment__card-right">
     <section className="appointment__actions">
-      <Button danger onClick={cancel}>Cancel</Button>
+      <Button danger onClick={props.onCancel}>Cancel</Button>
       <Button confirm onClick={props.onSave}>Save</Button>
     </section>
   </section>

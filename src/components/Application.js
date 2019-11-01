@@ -6,6 +6,7 @@ import DayList from "components/DayList";
 import {getAppointmentsForDay, getInterview} from "../helpers/selectors.js"
 
 
+
 export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
@@ -22,12 +23,15 @@ useEffect(()=> {
     setState(prev => ({ days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
   })
 },[]);
+
+
 const setDay = day => setState({ ...state, day });
 
 const appointments = getAppointmentsForDay(state, state.day);
 
 const schedule = appointments.map((appointment) => {
   const interview = getInterview(state, appointment.interview);
+
 
   return (
     <Appointment
