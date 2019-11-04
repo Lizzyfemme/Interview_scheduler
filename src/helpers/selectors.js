@@ -17,12 +17,12 @@ export const getAppointmentsForDay = (state, day) => {
 export const getInterviewersForDay = (state, day) => {
   const interviewers = [];
   const filteredDay = state.days.find(dayCheck => dayCheck.name === day)
-  // console.log("gIBD", state.days, day, filteredDay);
+ 
   if (!filteredDay) return interviewers;
   for (let id of filteredDay.interviewers) {
     interviewers.push(state.interviewers[id])
   }
-  // console.log("gIBD 2", interviewers);
+  
   return interviewers;
 }
 
