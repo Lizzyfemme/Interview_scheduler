@@ -9,7 +9,6 @@ import InterviewerList from "../InterviewerList"
 export default function Form(props) {
 const [name, setName] = useState(props.name || "");
 const [interviewer, setInterviewer] = useState(props.interviewer || null);
-
 function reset(){
   setName("")
   setInterviewer(null)
@@ -19,7 +18,7 @@ function cancel(){
   props.onCancel()
 };
 
-
+  console.log("inside form", props);
   return(
 
 <main className="appointment__card appointment__card--create">
@@ -38,6 +37,7 @@ function cancel(){
     <InterviewerList 
     interviewers={props.interviewers} 
     interviewer={interviewer} 
+    interview={props.interview ? props.interview : null}
     setInterviewer={setInterviewer} />
   </section>
   <section className="appointment__card-right">

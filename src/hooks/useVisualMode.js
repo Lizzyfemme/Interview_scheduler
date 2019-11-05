@@ -11,12 +11,11 @@ function transition(newMode){
 }
 function back() { 
   transition(history.pop())
-  setHistory(history)
+  setHistory(prev => ([...prev, mode]))
 
  }
 
   return { mode, transition, back };
 }
-
 
 

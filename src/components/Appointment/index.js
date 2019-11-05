@@ -15,7 +15,6 @@ import useVisualMode from "../../hooks/useVisualMode"
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
-const ERROR = "ERROR";
 const DELETE = "DELETE";
 const SAVING = "SAVING";
 const CONFIRM = "CONFIRM";
@@ -32,13 +31,15 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-    transition(CONFIRM)
+  
     transition(SAVING);
-    props.bookInterview(props.id, interview)
-      .then(() => {
-        transition(SHOW)
-      });
+  
+    props
+      .bookInterview(props.id, interview)
+      .then(() => transition(SHOW))
+      .catch(error => transition(ERROR_SAVE, true));
   }
+
   function cancel() {
     if (props.interview) {
       return transition(SHOW)
@@ -46,28 +47,27 @@ export default function Appointment(props) {
     return transition(EMPTY)
   }
 
-  function deleteItrvw(name, interviewer) {
-    const interview = {
-      student: name,
-      interviewer
-    };
-    transition(DELETE);
-    props.deleteInterview(props.id, interview)
-      .then(() => {
-        transition(EMPTY)
-      });
-  }
+function destroy(event) {
+ transition(DELETE, true);
+ props
+  .cancelInterview(props.id)
+  .then(() => transition(EMPTY))
+  .catch(error => transition(ERROR_DELETE, true));
+}
+
   function confirm() {
     transition(CONFIRM)
   }
+
   function onEdit(){
     transition(EDIT)
   }
 
   const { mode, transition, back } = useVisualMode(
-    props.interview ? SHOW : EMPTY
+    props.interview && props.interview.interviewer ? SHOW : EMPTY
   );
-
+console.log (mode)
+console.log("Props one layer up", props.interview)
   return (
 
     <Fragment>
@@ -76,9 +76,12 @@ export default function Appointment(props) {
       <Header time={props.time} />
 
       {mode === CREATE && <Form
-        interviewers={props.interviewers}
-        onCancel={cancel}
-        onSave={save} />}
+      
+       interviewers={props.interviewers} 
+    
+       onCancel={back}
+       onSave = {save} 
+        />}
       {mode === EMPTY && <Empty onAdd={() => { transition(CREATE) }} />}
       {mode === SHOW &&
         <Show
@@ -92,20 +95,27 @@ export default function Appointment(props) {
       {mode === DELETE && (<Status message={"Deleting..."} />)}
       {mode === CONFIRM && (<Confirm
         onCancel={cancel}
-        onConfirm={deleteItrvw}
+        onConfirm={destroy}
        
       />)}
       {mode === EDIT && (<Form 
       name={props.interview.student} 
       interviewers={props.interviewers} 
       interviewer={props.interview.interviewer}
+      interview={props.interview}
       onCancel={back}
       onSave = {save}
       />)}
       {mode === ERROR_SAVE && (<Error 
-      message = {"Opps something went wrong while saving..."} />)}
+      message = {"Opps something went wrong while saving..."} 
+      onClose={back}
+      />)}
+      
       {mode === ERROR_DELETE && (<Error 
-        message = {"Opps something went wrong while deleting..."} />)}
+        message = {"Opps something went wrong while deleting..."} 
+        onClose={back}
+        />)}
+        
   
 
 
