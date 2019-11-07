@@ -21,3 +21,6 @@ npm test
 ```sh
 npm run storybook
 ```
+
+!["desktop view"](https://github.com/Lizzyfemme/tweeter/public/images/desktop-view.png)
+!["mobile view"](https://github.com/Lizzyfemme/tweeter/public/images/mobile-view.png)
