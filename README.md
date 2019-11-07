@@ -22,5 +22,5 @@ npm test
 npm run storybook
 ```
 
-!["desktop view"](https://github.com/Lizzyfemme/tweeter/public/images/desktop-view.png)
-!["mobile view"](https://github.com/Lizzyfemme/tweeter/public/images/mobile-view.png)
+!["Entering interview"](https://github.com/Lizzyfemme/tweeter/public/images/desktop-view.png)
+!["Displaying appointment"](https://github.com/Lizzyfemme/tweeter/public/images/mobile-view.png)
