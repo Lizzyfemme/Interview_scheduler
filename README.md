@@ -2,7 +2,7 @@
 
 This is an app for creating an interview schedule.
 
-!["Entering interview"](hhttps://github.com/Lizzyfemme/Interview_scheduler/blob/master/public/images/Entering_interview.png)
+!["Entering interview"](https://github.com/Lizzyfemme/Interview_scheduler/blob/master/public/images/Entering_interview.png)
 !["Displaying appointment"](https://github.com/Lizzyfemme/Interview_scheduler/blob/master/public/images/Displaying_appointment.png)
 
 ## Dependencies
