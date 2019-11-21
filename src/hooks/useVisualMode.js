@@ -13,7 +13,9 @@ export default function useVisualMode(initial) {
   }
   // The back function removes a move from the call stack
   function back() {
-    transition(history.pop());
+    const historyClone = [...history];
+    transition(historyClone.pop());
+
     setHistory(prev => [...prev, mode]);
   }
 
