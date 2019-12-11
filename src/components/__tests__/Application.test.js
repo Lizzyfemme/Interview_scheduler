@@ -59,7 +59,7 @@ describe("Application", () => {
     expect(getByText(day, "no spots remaining")).toBeInTheDocument();
   });
 
-  it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
+  it("loads data, deletes an interview and increases the spots by 1", async () => {
     const { container } = render(<Application />);
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
